@@ -6,40 +6,33 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "path",
+          "style": "powerline",
           "foreground": "#ffffff",
           "properties": {
             "style": "full"
           },
-          "style": "powerline",
-          "template": " {{ .Path }} ",
-          "type": "path"
+          "template": " {{ .Path }} "
         },
         {
-          "properties": {
-            "display_stash_count": false,
-            "display_status": true,
-            "display_upstream_icon": false,
-            "postfix": ")",
-            "prefix": " (",
-            "status_symbols": {
-              "added": "\u2191",
-              "deleted": "✘",
-              "modified": "~"
-            },
-            "template": "{{ .HEAD }}{{ if or .Working.Changed .Working.Added .Working.Deleted }} {{ .StatusSymbol.Added }}{{ .Working.Added }} {{ .StatusSymbol.Modified }}{{ .Working.Modified }} {{ .StatusSymbol.Deleted }}{{ .Working.Deleted }}{{ end }}"
-          },
-          "foreground": "#00ffff",
           "type": "git",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "#00ffff",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": false,
+            "fetch_upstream_icon": false
+          },
+          "template": "{{ .HEAD }}({{ if gt .Working.Added 0 }}↑{{ .Working.Added }} {{ end }}{{ if gt .Working.Modified 0 }}~{{ .Working.Modified }} {{ end }}{{ if gt .Working.Deleted 0 }}✘{{ .Working.Deleted }}{{ end }})"
         },
         {
+          "type": "text",
+          "style": "plain",
           "properties": {
             "prefix": "\n",
             "text": "❯"
           },
-          "foreground": "#ffffff",
-          "type": "text",
-          "style": "plain"
+          "foreground": "#ffffff"
         }
       ]
     }
