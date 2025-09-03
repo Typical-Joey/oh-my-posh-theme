@@ -20,10 +20,11 @@
           "foreground": "#00ffff",
           "properties": {
             "fetch_status": true,
+            "fetch_untracked_files": true,
             "fetch_stash_count": false,
             "fetch_upstream_icon": false
           },
-          "template": "{{ .HEAD }}({{ if gt .Working.Added 0 }}↑{{ .Working.Added }} {{ end }}{{ if gt .Working.Modified 0 }}~{{ .Working.Modified }} {{ end }}{{ if gt .Working.Deleted 0 }}✘{{ .Working.Deleted }}{{ end }})"
+          "template": "{{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uF692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }}"
         },
         {
           "type": "text",
