@@ -36,7 +36,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#ffffff",
+          "foreground": "#00ff00",
           "template": " ❯"
         }
       ]
