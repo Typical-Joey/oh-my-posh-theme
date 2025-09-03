@@ -1,1 +1,1 @@
-oh-my-posh init pwsh --config .\minimal-git.omp.json
+oh-my-posh init pwsh --config typical-theme.omp.json
