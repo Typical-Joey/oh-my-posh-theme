@@ -19,12 +19,12 @@
           "style": "powerline",
           "foreground": "#00ffff",
           "properties": {
-            "branch_icon": "\uF408 ",
+            "branch_icon": "",
             "fetch_status": true,
             "fetch_untracked_files": true,
             "fetch_stash_count": false
           },
-          "template": "{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if gt .Working.Untracked 0 }} <#2ecc71>\uF067{{ .Working.Untracked }}</>{{ end }}{{ if gt .Working.Modified 0 }} <#f1c40f>\uF044{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <#e74c3c>\uF00D{{ .Working.Deleted }}</>{{ end }}{{ if gt .Staging.Added 0 }} <#2ecc71>\uF046+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Modified 0 }} <#f1c40f>\uF046~{{ .Staging.Modified }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <#e74c3c>\uF046-{{ .Staging.Deleted }}</>{{ end }}{{ if gt .StashCount 0}} \uF692{{ .StashCount }}{{ end }}"
+          "template": "{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }} ({{ if or (gt .Working.Untracked 0) (gt .Staging.Added 0) }}{{ if gt .Working.Untracked 0 }}<#e74c3c>\uF067{{ .Working.Untracked }}</>{{ if gt .Staging.Added 0 }}/<#2ecc71>{{ .Staging.Added }}</>{{ end }}{{ else }}<#2ecc71>\uF067{{ .Staging.Added }}</>{{ end }} {{ end }}{{ if or (gt .Working.Modified 0) (gt .Staging.Modified 0) }}{{ if gt .Working.Modified 0 }}<#e74c3c>~{{ .Working.Modified }}</>{{ if gt .Staging.Modified 0 }}/<#2ecc71>{{ .Staging.Modified }}</>{{ end }}{{ else }}<#2ecc71>~{{ .Staging.Modified }}</>{{ end }} {{ end }}{{ if or (gt .Working.Deleted 0) (gt .Staging.Deleted 0) }}{{ if gt .Working.Deleted 0 }}<#e74c3c>\uF00D{{ .Working.Deleted }}</>{{ if gt .Staging.Deleted 0 }}/<#2ecc71>{{ .Staging.Deleted }}</>{{ end }}{{ else }}<#2ecc71>\uF00D{{ .Staging.Deleted }}</>{{ end }}{{ end }}{{ if gt .StashCount 0}}<#ff8c00>\udb80\ude3f{{ .StashCount }}{{ end }})"
         }
       ]
     },

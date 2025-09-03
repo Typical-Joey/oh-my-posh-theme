@@ -1,0 +1,1 @@
+oh-my-posh init pwsh --config .\minimal-git.omp.json
